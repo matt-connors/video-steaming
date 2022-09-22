@@ -1,3 +1,4 @@
 {
-    "CHUNK_SIZE": 1000
+    "CHUNK_SIZE": 1000,
+    "VIDEO_PATH": "assets"
 }

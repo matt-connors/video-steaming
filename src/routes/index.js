@@ -1,15 +1,16 @@
 const express = require('express');
 const player = require('./player');
+const ui = require('./ui');
 
 const app = express();
 
 const PORT = 8080;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+// Direct all /video requests to the player route
+app.use('/video', player);
 
-app.use('/watch', player);
+// Direct all other requests to the generic ui route
+app.all('*', ui);
 
 app.listen(PORT, error => {
     if (error) {

@@ -4,6 +4,9 @@ A simple streaming application for mp4 videos built using node.js.
 
 ## Modules
 - Express
+- handlebars
+- fs
+- path
 - Nodemon (for development)
 
 
