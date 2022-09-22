@@ -5,10 +5,23 @@ const utils = require("../utils");
 const metadata = require("../metadata.json");
 
 /**
+ * Homepage
+ * List all videos (from the metadata file)
+ */
+
+router.get('/', (req, res) => {
+    const context = {
+        videos: metadata
+    };
+    const page = utils.renderPage('index', context);
+    res.send(page);
+});
+
+/**
  * Send user the page UI for the player
  */
 
- router.get('/watch/:id', (req, res, next) => {
+router.get('/watch/:id', (req, res, next) => {
     const video_id = req.params.id;
     const meta = metadata[video_id];
     if (meta) {
@@ -22,6 +35,10 @@ const metadata = require("../metadata.json");
         next();
     }
 });
+
+/**
+ * Send user static pages or the 404 page
+ */
 
 router.all('*', (req, res) => {
     const page = utils.renderPage(req.path);
